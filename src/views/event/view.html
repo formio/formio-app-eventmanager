@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col col-sm-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Event Information</h3>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Title:</strong> {{ event.resource.data.title }}</li>
+        <li class="list-group-item"><strong>Description:</strong> {{ event.resource.data.description }}</li>
+        <li class="list-group-item"><strong>Date:</strong> {{ event.resource.data.date }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col col-sm-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Event Registration</h3>
+      </div>
+      <div class="panel-body">
+        <formio src="eventRegisterForm" submission="submission" hide-components="hideComponents"></formio>
+      </div>
+    </div>
+  </div>
+</div>

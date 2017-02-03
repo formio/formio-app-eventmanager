@@ -8,22 +8,27 @@
     'ngFormioHelper'
   ])
   .config([
+    '$locationProvider',
     '$stateProvider',
     '$urlRouterProvider',
     'FormioProvider',
     'FormioAuthProvider',
     'FormioResourceProvider',
+    'FormioFormsProvider',
     'AppConfig',
     '$injector',
     function(
+      $locationProvider,
       $stateProvider,
       $urlRouterProvider,
       FormioProvider,
       FormioAuthProvider,
       FormioResourceProvider,
+      FormioFormsProvider,
       AppConfig,
       $injector
     ) {
+      $locationProvider.hashPrefix('');
       FormioProvider.setAppUrl(AppConfig.appUrl);
       FormioProvider.setBaseUrl(AppConfig.apiUrl);
       FormioAuthProvider.setForceAuth(true);
@@ -40,6 +45,15 @@
       // Register all of the resources.
       angular.forEach(AppConfig.resources, function(resource, name) {
         FormioResourceProvider.register(name, resource.form, $injector.get(resource.resource + 'Provider'));
+      });
+
+      FormioFormsProvider.register('register', AppConfig.appUrl, {
+        field: [{
+          name: 'event',
+          stateParam: 'eventId'
+        }],
+        base: 'event.',
+        tag: 'event'
       });
 
       $urlRouterProvider.otherwise('/');

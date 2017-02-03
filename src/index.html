@@ -39,7 +39,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a ui-sref="home">Home</a></li>
+                <li ng-class="{'active': isActive('home')}"><a ui-sref="home">Home</a></li>
+                <li ng-class="{'active': isActive('event')}"><a ui-sref="eventIndex()">Events</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li ng-if="authenticated"><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
